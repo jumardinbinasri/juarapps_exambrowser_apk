@@ -1,0 +1,76 @@
+# Isi database pusat otomatis setiap Release APK terbit.
+# Syarat sekali saja: 2 secret di repo ini
+# (Settings -> Secrets -> Actions): SUPABASE_URL dan
+# SUPABASE_SERVICE_ROLE_KEY (salin dari Supabase Dashboard -> API).
+# Tanpa secret: workflow berhenti aman, admin isi via tombol web.
+name: Isi database saat rilis
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      notes:
+        description: 'Catatan perubahan (opsional)'
+        required: false
+        default: ''
+      wajib:
+        description: 'Wajib update?'
+        required: false
+        default: 'tidak'
+        type: choice
+        options: ['tidak', 'ya']
+permissions:
+  contents: write
+jobs:
+  isi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Isi app_settings + app-update.json
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          TAG: ${{ github.event.release.tag_name }}
+          BODY: ${{ github.event.release.body }}
+          NOTES_IN: ${{ inputs.notes }}
+          WAJIB_IN: ${{ inputs.wajib }}
+        run: |
+          python3 <<'EOF'
+          import json, os, re, urllib.request
+          tag = os.environ.get('TAG', '')
+          m = re.search(r'(\d+\.\d+\.\d+\+\d+)', tag)
+          ver = m.group(1) if m else ''
+          if not ver:
+              print('Tag tanpa versi (cth. v1.2.0+2080). Berhenti.')
+              raise SystemExit(1)
+          repo = os.environ['GITHUB_REPOSITORY']
+          apk = f'ExamBrowser-v{ver}.apk'
+          url = f'https://github.com/{repo}/releases/download/{tag}/{apk}'
+          notes = os.environ.get('NOTES_IN', '') or os.environ.get('BODY', '')
+          wajib = 'true' if os.environ.get('WAJIB_IN', '') == 'ya' else 'false'
+          data = {'latest_version': ver, 'apk_url': url,
+                  'update_notes': notes.strip(), 'update_wajib': wajib}
+          with open('app-update.json', 'w') as f:
+              json.dump(data, f, indent=2)
+          print('app-update.json:', data)
+          base, key = os.environ.get('SUPABASE_URL', ''), os.environ.get('SUPABASE_SERVICE_ROLE_KEY', '')
+          if not base or not key:
+              print('Secret Supabase belum dipasang: database BELUM terisi, file JSON sudah.')
+              raise SystemExit(0)
+          rows = [{'key': k, 'value': v} for k, v in data.items()]
+          req = urllib.request.Request(
+              base.rstrip('/') + '/rest/v1/app_settings?on_conflict=key',
+              data=json.dumps(rows).encode(),
+              headers={'apikey': key, 'Authorization': 'Bearer ' + key,
+                        'Content-Type': 'application/json',
+                        'Prefer': 'resolution=merge-duplicates,return=minimal'},
+              method='POST')
+          with urllib.request.urlopen(req) as r:
+              print('Database terisi:', r.status)
+          EOF
+      - name: Simpan app-update.json
+        run: |
+          git config user.name 'github-actions'
+          git config user.email 'github-actions@github.com'
+          git add app-update.json
+          git diff --cached --quiet || (git commit -m "Update rilis" && git push)
