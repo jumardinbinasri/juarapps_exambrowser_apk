@@ -1,6 +1,6 @@
 {
-  "latest_version": "1.0.0+1",
-  "notes": "Contoh catatan rilis untuk mode Mandiri.",
-  "announcement": "Contoh pengumuman untuk semua HP Mandiri.",
-  "download_url": "https://github.com/PEMILIK/REPO/releases/download/v1.0.0+1/NAMA.apk"
+  "latest_version": "1.2.1+2083",
+  "notes": "Label versi HP benar (angka build pubspec asli).",
+  "announcement": "",
+  "download_url": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.2.1%2B2083/ExamBrowser-v1.2.1%2B2083-arm64.apk"
 }
