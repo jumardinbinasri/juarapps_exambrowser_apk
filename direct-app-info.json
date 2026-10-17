@@ -1,6 +1,6 @@
 {
-  "latest_version": "1.2.1+2083",
-  "notes": "Label versi HP benar (angka build pubspec asli).",
+  "latest_version": "1.2.2+2084",
+  "notes": "Pengumuman tak dobel saat buka dingin; logo baru dua mode; glow ikut jari; riwayat hanya link ketik; placeholder PIN.",
   "announcement": "",
-  "download_url": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.2.1%2B2083/ExamBrowser-v1.2.1%2B2083-arm64.apk"
+  "download_url": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.2.2%2B2084/ExamBrowser-Kiosk-v1.2.2%2B2084-arm64.apk"
 }
