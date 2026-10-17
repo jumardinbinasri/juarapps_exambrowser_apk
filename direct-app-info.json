@@ -1,6 +1,8 @@
 {
-  "latest_version": "1.3.0+2085",
-  "notes": "Tampilkan sekarang tembus jendela jadwal (Live+Direct).",
+  "latest_version": "1.3.1+2086",
+  "notes": "Update APK Kiosk (versi ber-akhiran -kiosk) + rute unduh penuh/kiosk terpisah.",
   "announcement": "",
-  "download_url": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.3.0%2B2085-kiosk/ExamBrowser-Kiosk-v1.3.0%2B2085-arm64.apk"
+  "download_url": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.3.1%2B2086-kiosk/ExamBrowser-Kiosk-v1.3.1%2B2086-arm64.apk",
+  "download_url_full": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.3.1%2B2086/ExamBrowser-v1.3.1%2B2086-arm64.apk",
+  "download_url_kiosk": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.3.1%2B2086-kiosk/ExamBrowser-Kiosk-v1.3.1%2B2086-arm64.apk"
 }
