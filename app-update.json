@@ -1,6 +1,8 @@
 {
-    "latest_version":  "1.3.2+2087",
-    "apk_url":  "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.3.2%2B2087/ExamBrowser-v1.3.2+2087-arm64.apk",
-    "update_notes":  "Perbaikan \u0027Tampilkan sekarang\u0027 (muncul sekali tiap dipicu) Live+Direct.",
-    "update_wajib":  "true"
+  "latest_version": "1.4.0+2090",
+  "apk_url": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.4.0%2B2090/ExamBrowser-v1.4.0%2B2090-arm64.apk",
+  "update_notes": "Perbaikan tampilan admin:\n- AppBar otomatis menyembunyikan diri saat konten digulir.\n- Dialog \"Buat Pengumuman\" didesain ulang lebih rapi.\n- Lembar \"Semua Menu\" bisa digeser mengikuti jari (tanpa animasi skala).",
+  "update_wajib": "false",
+  "apk_url_arm64": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.4.0%2B2090/ExamBrowser-v1.4.0%2B2090-arm64.apk",
+  "apk_url_armv7": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.4.0%2B2090/ExamBrowser-v1.4.0%2B2090-armv7.apk"
 }
