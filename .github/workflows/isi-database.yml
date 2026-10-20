@@ -2,13 +2,20 @@
 # Syarat sekali saja: 2 secret di repo ini
 # (Settings -> Secrets -> Actions): SUPABASE_URL dan
 # SUPABASE_SERVICE_ROLE_KEY (salin dari Supabase Dashboard -> API).
-# Tanpa secret: workflow berhenti aman, admin isi via tombol web.
+# Tanpa secret: workflow tetap memperbarui app-update.json.
+#
+# Mendukung APK universal maupun split ABI (arm64 + armv7). Untuk split,
+# app_settings diisi apk_url_arm64/apk_url_armv7 sekaligus apk_url
+# (fallback ke arm64) agar HP lama tetap dapat tautan yang valid.
 name: Isi database saat rilis
 on:
   release:
     types: [published]
   workflow_dispatch:
     inputs:
+      version:
+        description: 'Versi rilis (cth. 1.4.0+2090)'
+        required: true
       notes:
         description: 'Catatan perubahan (opsional)'
         required: false
@@ -26,44 +33,95 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - name: Isi app_settings + app-update.json
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           TAG: ${{ github.event.release.tag_name }}
           BODY: ${{ github.event.release.body }}
+          VERSION_IN: ${{ inputs.version }}
           NOTES_IN: ${{ inputs.notes }}
           WAJIB_IN: ${{ inputs.wajib }}
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
         run: |
           python3 <<'EOF'
           import json, os, re, urllib.request
-          tag = os.environ.get('TAG', '')
-          m = re.search(r'(\d+\.\d+\.\d+\+\d+)', tag)
-          ver = m.group(1) if m else ''
+          from urllib.parse import quote
+
+          tag = os.environ.get('TAG', '').strip()
+          ver = os.environ.get('VERSION_IN', '').strip()
           if not ver:
-              print('Tag tanpa versi (cth. v1.2.0+2080). Berhenti.')
+              m = re.search(r'(\d+\.\d+\.\d+\+\d+)', tag)
+              ver = m.group(1) if m else ''
+          if not ver:
+              print('Versi tidak terbaca dari tag/input. Berhenti.')
               raise SystemExit(1)
-          repo = os.environ['GITHUB_REPOSITORY']
-          apk = f'ExamBrowser-v{ver}.apk'
-          url = f'https://github.com/{repo}/releases/download/{tag}/{apk}'
-          notes = os.environ.get('NOTES_IN', '') or os.environ.get('BODY', '')
-          wajib = 'true' if os.environ.get('WAJIB_IN', '') == 'ya' else 'false'
-          data = {'latest_version': ver, 'apk_url': url,
-                  'update_notes': notes.strip(), 'update_wajib': wajib}
+          if not tag:
+              tag = f'v{ver}'
+
+          repo = os.environ['REPO']
+          token = os.environ.get('GH_TOKEN', '')
+          assets = []
+          try:
+              req = urllib.request.Request(
+                  f'https://api.github.com/repos/{repo}/releases/tags/{quote(tag, safe="")}',
+                  headers={
+                      'Authorization': f'Bearer {token}',
+                      'Accept': 'application/vnd.github+json',
+                      'User-Agent': 'exam-browser-release',
+                  })
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  rel = json.load(r)
+              assets = [str(a.get('name', '')) for a in rel.get('assets', [])]
+          except Exception as exc:
+              print('Gagal membaca aset rilis:', exc)
+
+          def url_for(name):
+              return f'https://github.com/{repo}/releases/download/{quote(tag, safe="")}/{quote(name, safe="")}'
+
+          apk_names = [n for n in assets if n.lower().endswith('.apk')]
+          arm64 = next((n for n in apk_names if re.search(r'arm64', n, re.I)), '')
+          armv7 = next((n for n in apk_names if re.search(r'armv7|armeabi', n, re.I)), '')
+          universal = next((n for n in apk_names if n not in (arm64, armv7)), '')
+          if not apk_names:
+              # Nama baku bila aset belum terunggah saat workflow berjalan.
+              arm64 = f'ExamBrowser-v{ver}-arm64.apk'
+              armv7 = f'ExamBrowser-v{ver}-armv7.apk'
+
+          data = {
+              'latest_version': ver,
+              'apk_url': url_for(arm64 or universal),
+              'update_notes': (os.environ.get('NOTES_IN', '') or os.environ.get('BODY', '')).strip(),
+              'update_wajib': 'true' if os.environ.get('WAJIB_IN', '') == 'ya' else 'false',
+          }
+          if arm64:
+              data['apk_url_arm64'] = url_for(arm64)
+          if armv7:
+              data['apk_url_armv7'] = url_for(armv7)
+
           with open('app-update.json', 'w') as f:
               json.dump(data, f, indent=2)
           print('app-update.json:', data)
-          base, key = os.environ.get('SUPABASE_URL', ''), os.environ.get('SUPABASE_SERVICE_ROLE_KEY', '')
+
+          base = os.environ.get('SUPABASE_URL', '')
+          key = os.environ.get('SUPABASE_SERVICE_ROLE_KEY', '')
           if not base or not key:
               print('Secret Supabase belum dipasang: database BELUM terisi, file JSON sudah.')
               raise SystemExit(0)
+
           rows = [{'key': k, 'value': v} for k, v in data.items()]
           req = urllib.request.Request(
               base.rstrip('/') + '/rest/v1/app_settings?on_conflict=key',
               data=json.dumps(rows).encode(),
-              headers={'apikey': key, 'Authorization': 'Bearer ' + key,
-                        'Content-Type': 'application/json',
-                        'Prefer': 'resolution=merge-duplicates,return=minimal'},
+              headers={
+                  'apikey': key,
+                  'Authorization': 'Bearer ' + key,
+                  'Content-Type': 'application/json',
+                  'Prefer': 'resolution=merge-duplicates,return=minimal',
+              },
               method='POST')
           with urllib.request.urlopen(req) as r:
               print('Database terisi:', r.status)
@@ -73,4 +131,4 @@ jobs:
           git config user.name 'github-actions'
           git config user.email 'github-actions@github.com'
           git add app-update.json
-          git diff --cached --quiet || (git commit -m "Update rilis" && git push)
+          git diff --cached --quiet || (git commit -m "Update rilis" && git push origin HEAD:main)
