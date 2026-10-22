@@ -1,8 +1,8 @@
 {
-  "latest_version": "1.4.0+2091",
-  "apk_url": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.4.0%2B2091/ExamBrowser-v1.4.0%2B2091-arm64.apk",
-  "update_notes": "Perbaikan menu Ujian admin dan rilis fitur Ujian Harian.",
+  "latest_version": "1.4.0+2092",
+  "apk_url": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.4.0%2B2092/ExamBrowser-v1.4.0%2B2092-arm64.apk",
+  "update_notes": "Perbaikan:\n- Konten tidak lagi tertutup menu cepat di bagian bawah.\n- Pesan error pembuatan pengumuman tampil di dalam dialog.\n- Gambar pengumuman otomatis dioptimalkan (sumber maks 5 MB, hasil maks 2 MB).",
   "update_wajib": "false",
-  "apk_url_arm64": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.4.0%2B2091/ExamBrowser-v1.4.0%2B2091-arm64.apk",
-  "apk_url_armv7": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.4.0%2B2091/ExamBrowser-v1.4.0%2B2091-armv7.apk"
+  "apk_url_arm64": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.4.0%2B2092/ExamBrowser-v1.4.0%2B2092-arm64.apk",
+  "apk_url_armv7": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.4.0%2B2092/ExamBrowser-v1.4.0%2B2092-armv7.apk"
 }
