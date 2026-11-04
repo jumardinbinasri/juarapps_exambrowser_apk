@@ -1,8 +1,8 @@
 {
-  "latest_version": "1.5.5+6111",
-  "apk_url": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.5.5%2B6111/ExamBrowser-v1.5.5%2B6111-arm64.apk",
-  "update_notes": "Perbaikan menu admin: konten layar penuh saat digulir, AppBar dan quick menu muncul kembali saat berhenti, serta item terakhir tidak tertutup bilah. Mode Belajar: perbaikan tampilan materi, pencarian, dan stabilitas sesi.",
+  "latest_version": "1.5.6+8113",
+  "apk_url": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.5.6%2B8113/ExamBrowser-v1.5.6%2B8113-arm64.apk",
+  "update_notes": "Perbaikan instalasi APK.\n\n- Semua APK dalam satu rilis kini memakai versionCode yang sama (8113), jadi berkas arm64, armv7, dan universal bisa saling menimpa tanpa error \"Aplikasi tidak terpasang\".\n- Pilih satu berkas:\n  - universal (70 MB) - satu link untuk semua HP, paling aman.\n  - arm64 (40,9 MB) - HP 64-bit (2020 ke atas).\n  - armv7 (35,7 MB) - HP lama 32-bit.\n- Android minimal 7.0 (API 24). Android 6 ke bawah tidak didukung.\n- Bila diblokir Play Protect atau pengaman merek HP, izinkan \"instal aplikasi tidak dikenal\" untuk browser.",
   "update_wajib": "false",
-  "apk_url_arm64": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.5.5%2B6111/ExamBrowser-v1.5.5%2B6111-arm64.apk",
-  "apk_url_armv7": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.5.5%2B6111/ExamBrowser-v1.5.5%2B6111-armv7.apk"
+  "apk_url_arm64": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.5.6%2B8113/ExamBrowser-v1.5.6%2B8113-arm64.apk",
+  "apk_url_armv7": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.5.6%2B8113/ExamBrowser-v1.5.6%2B8113-armv7.apk"
 }
