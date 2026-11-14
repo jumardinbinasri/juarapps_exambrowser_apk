@@ -1,9 +1,8 @@
 {
-  "latest_version": "1.7.0+8124",
-  "apk_url": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.0%2B8124/ExamBrowser-v1.7.0.8124-arm64.apk",
-  "update_notes": "Perbaikan bilah atas/bawah di menu admin (Ringkasan, Ujian, Jadwal, dll): header dan quick menu kini hanya sembunyi saat layar benar-benar digulir. Tap atau tekan lama tidak lagi membuat tampilan bergoyang/melebar.\n\nAset: arm64 (utama), armv7 (HP 32-bit), universal (satu berkas untuk semua). Semua versionCode 8124.",
-  "update_wajib": "true",
-  "apk_url_arm64": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.0%2B8124/ExamBrowser-v1.7.0.8124-arm64.apk",
-  "apk_url_armv7": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.0%2B8124/ExamBrowser-v1.7.0.8124-armv7.apk",
-  "apk_url_universal": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.0%2B8124/ExamBrowser-v1.7.0.8124-universal.apk"
+  "latest_version": "1.7.1+8125",
+  "apk_url": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.1%2B8125/ExamBrowser-v1.7.1%2B8125-arm64.apk",
+  "update_notes": "Perbaikan Mode Senyap saat mulai ujian.\n\n- Tombol MULAI UJIAN AMAN kini terkunci sampai izin Mode Senyap (Jangan Ganggu) dan matikan getar diberikan, sama seperti Direct Exam.\n- Setelah ujian berakhir atau aplikasi ditutup penuh, suara dan getar HP otomatis kembali normal (tidak tertinggal DND).\n- Peringatan pelanggaran/unpin tetap berbunyi walau HP sedang senyap/DND.\n- Berlaku untuk Live Exam dan Direct Exam.\n\nAset: arm64 (utama), armv7 (HP 32-bit), universal. Semua versionCode 8125.",
+  "update_wajib": "false",
+  "apk_url_arm64": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.1%2B8125/ExamBrowser-v1.7.1%2B8125-arm64.apk",
+  "apk_url_armv7": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.1%2B8125/ExamBrowser-v1.7.1%2B8125-armv7.apk"
 }
