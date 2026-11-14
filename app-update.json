@@ -1,8 +1,9 @@
 {
   "latest_version": "1.7.0+8124",
-  "apk_url": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.0%2B8124/ExamBrowser-v1.7.0%2B8124-arm64.apk",
+  "apk_url": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.0%2B8124/ExamBrowser-v1.7.0.8124-arm64.apk",
   "update_notes": "Perbaikan bilah atas/bawah di menu admin (Ringkasan, Ujian, Jadwal, dll): header dan quick menu kini hanya sembunyi saat layar benar-benar digulir. Tap atau tekan lama tidak lagi membuat tampilan bergoyang/melebar.\n\nAset: arm64 (utama), armv7 (HP 32-bit), universal (satu berkas untuk semua). Semua versionCode 8124.",
-  "update_wajib": "false",
-  "apk_url_arm64": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.0%2B8124/ExamBrowser-v1.7.0%2B8124-arm64.apk",
-  "apk_url_armv7": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.0%2B8124/ExamBrowser-v1.7.0%2B8124-armv7.apk"
+  "update_wajib": "true",
+  "apk_url_arm64": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.0%2B8124/ExamBrowser-v1.7.0.8124-arm64.apk",
+  "apk_url_armv7": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.0%2B8124/ExamBrowser-v1.7.0.8124-armv7.apk",
+  "apk_url_universal": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.0%2B8124/ExamBrowser-v1.7.0.8124-universal.apk"
 }
