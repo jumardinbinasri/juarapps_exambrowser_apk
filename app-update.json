@@ -1,9 +1,8 @@
 {
-  "latest_version": "1.7.1+8125",
-  "apk_url": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.1%2B8125/ExamBrowser-v1.7.1.8125-arm64.apk",
-  "update_notes": "Perbaikan Mode Senyap saat mulai ujian: tombol MULAI UJIAN AMAN kini terkunci sampai izin Mode Senyap (Jangan Ganggu) dan matikan getar diberikan, sama seperti Direct Exam. Setelah ujian berakhir atau aplikasi ditutup penuh, suara dan getar HP otomatis kembali normal (tidak tertinggal DND). Peringatan pelanggaran/unpin tetap berbunyi walau HP sedang senyap/DND. Berlaku untuk Live Exam dan Direct Exam.\n\nAset: arm64 (utama), armv7 (HP 32-bit), universal (satu berkas untuk semua). Semua versionCode 8125.",
-  "update_wajib": "true",
-  "apk_url_arm64": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.1%2B8125/ExamBrowser-v1.7.1.8125-arm64.apk",
-  "apk_url_armv7": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.1%2B8125/ExamBrowser-v1.7.1.8125-armv7.apk",
-  "apk_url_universal": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.1%2B8125/ExamBrowser-v1.7.1.8125-universal.apk"
+  "latest_version": "1.7.1+8127",
+  "apk_url": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.1%2B8127/ExamBrowser-v1.7.1%2B8127-arm64.apk",
+  "update_notes": "Rilis APK ExamBrowser v1.7.1+8127 (universal: 64-bit + 32-bit).\n\n- Perbaikan pencarian/monitoring peserta: seluruh riwayat akun terjangkau, tidak lagi mentok 74 nama.\n- Pencarian server-side (minimal 2 karakter) dengan debounce.\n- File ini untuk instal manual di HP admin.\n\nSHA-256: 726345c0463922378f26bae84d95b31fe24fe29c2035cb1ac3dbcce936f3febb",
+  "update_wajib": "false",
+  "apk_url_arm64": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.1%2B8127/ExamBrowser-v1.7.1%2B8127-arm64.apk",
+  "apk_url_armv7": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.1%2B8127/ExamBrowser-v1.7.1%2B8127-armv7.apk"
 }
