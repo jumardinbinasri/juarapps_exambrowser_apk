@@ -1,8 +1,8 @@
 {
-  "latest_version": "1.7.1+8127",
-  "apk_url": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.1%2B8127/ExamBrowser-v1.7.1%2B8127-arm64.apk",
-  "update_notes": "Rilis APK ExamBrowser v1.7.1+8127 (universal: 64-bit + 32-bit).\n\n- Perbaikan pencarian/monitoring peserta: seluruh riwayat akun terjangkau, tidak lagi mentok 74 nama.\n- Pencarian server-side (minimal 2 karakter) dengan debounce.\n- File ini untuk instal manual di HP admin.\n\nSHA-256: 726345c0463922378f26bae84d95b31fe24fe29c2035cb1ac3dbcce936f3febb",
+  "latest_version": "1.7.1+8128",
+  "apk_url": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.1%2B8128/ExamBrowser-v1.7.1%2B8128-arm64.apk",
+  "update_notes": "Perbaikan pemilih lembaga (tanpa memaksa update).\n\n- Daftar lembaga langsung tampil saat dialog dibuka (tidak lagi kosong sampai diketik).\n- NPSN ikut dibundel di APK, jadi pencarian NPSN tetap jalan walau server pusat tidak terbaca.\n- Sumber cadangan daftar sekolah dipindah ke situs resmi (Vercel); raw GitHub tidak dipakai lagi karena repo sumber privat.\n- Pencarian juga cocok dengan kode sekolah.\n\nBuild 8128. Pasang manual (USB/unduh), tidak wajib update.",
   "update_wajib": "false",
-  "apk_url_arm64": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.1%2B8127/ExamBrowser-v1.7.1%2B8127-arm64.apk",
-  "apk_url_armv7": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.1%2B8127/ExamBrowser-v1.7.1%2B8127-armv7.apk"
+  "apk_url_arm64": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.1%2B8128/ExamBrowser-v1.7.1%2B8128-arm64.apk",
+  "apk_url_armv7": "https://github.com/jumardinbinasri/juarapps_exambrowser_apk/releases/download/v1.7.1%2B8128/ExamBrowser-v1.7.1%2B8128-armv7.apk"
 }
